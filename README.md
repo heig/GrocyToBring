@@ -34,6 +34,9 @@ You can add it to your crontab e.g. and have it run every morning at 8:10:
 
 `10 8 * * * sudo docker run --rm --name run-grocy-to-bring grocy-to-bring 2>&1 | /usr/bin/logger -t GrocyToBring`
 
+# Known Issues
+Currently no special chars like "%" work. So e.g. "Milch 1,5% Fett" will not be accepted by BRING. I will implement some kind of workaround soon. 
+
 # Thank you
 
 Thank you to helvete003 for reverse-engineering the Bring REST API: https://github.com/helvete003/bring-api
