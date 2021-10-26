@@ -33,3 +33,9 @@ Now simply run the container:
 You can add it to your crontab e.g. and have it run every morning at 8:10: 
 
 `10 8 * * * sudo docker run --rm --name run-grocy-to-bring grocy-to-bring 2>&1 | /usr/bin/logger -t GrocyToBring`
+
+# Thank you
+
+Thank you to helvete003 for reverse-engineering the Bring REST API: https://github.com/helvete003/bring-api
+
+And of course a massive shout out to Bernd Bestel the founder of https://grocy.info/ 
