@@ -34,6 +34,12 @@ You can add it to your crontab e.g. and have it run every morning at 8:10:
 
 `10 8 * * * sudo docker run --env-file /home/admin/GrocyToBring/.env --rm --name run-grocy-to-bring grocy-to-bring 2>&1 | /usr/bin/logger -t GrocyToBring`
 
+## Hide items from BRING list
+
+If you want to hide items fron the BRING list, simply add a boolean user field to the products like "Hide from Bring?" and set the field name in .env (__HIDEFROMBRING__)
+
+![screenshot user field](https://github.com/heig/GrocyToBring/blob/media/img/grocy_user_fields.png)
+
 # Known Issues
 Currently no special chars like "%" work in BRING. Therefore I implemented a helper function to replace "%" with "Prozent". You can change this in .env (__PERCENTREPLACE__) for another language.
 
