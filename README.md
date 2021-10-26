@@ -28,11 +28,11 @@ Note the __UUID__ of the list you want to use and add it to the _.env_ file.
 
 Now simply run the container:
 
-`docker run  --rm --name run-grocy-to-bring grocy-to-bring`
+`docker run --env-file .env --rm --name run-grocy-to-bring grocy-to-bring`
 
 You can add it to your crontab e.g. and have it run every morning at 8:10: 
 
-`10 8 * * * sudo docker run --rm --name run-grocy-to-bring grocy-to-bring 2>&1 | /usr/bin/logger -t GrocyToBring`
+`10 8 * * * sudo docker run --env-file /home/admin/GrocyToBring/.env --rm --name run-grocy-to-bring grocy-to-bring 2>&1 | /usr/bin/logger -t GrocyToBring`
 
 # Known Issues
 Currently no special chars like "%" work in BRING. Therefore I implemented a helper function to replace "%" with "Prozent". You can change this in .env (__PERCENTREPLACE__) for another language.
