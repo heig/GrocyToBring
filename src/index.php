@@ -7,6 +7,9 @@ $bringuuid = getenv('BRINGUUID');
 $grocyURL = getenv('GROCYURL');
 $grocyApiKey = getenv('GROCYAPIKEY');
 
+
+
+
 $bring = new BringApi('',"$bringuuid",false);
 
 //echo $bring->getItems();
@@ -23,8 +26,10 @@ foreach($missing_products as $p){
 }
 
 function clean($string) {
+    $percentReplace = getenv('PERCENTREPLACE');
+    
    if(preg_match('/%/', $string)){
-    return str_replace( array("%"), ' Prozent', $string);
+    return str_replace( array("%"), " $percentReplace", $string);
    }else{
     return str_replace( array("#", "'", ";"), '', $string);
    }
