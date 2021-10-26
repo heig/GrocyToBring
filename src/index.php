@@ -15,10 +15,17 @@ $grocy = new GrocyApi($grocyURL, $grocyApiKey);
 $missing_products = $grocy->getVolatileProducts('0')->missing_products;
 
 foreach($missing_products as $p){
-    if(empty($bring->saveItem($p->name, ''))){
-        echo "Added $p->name to bring \n";
+    if(empty($bring->saveItem(clean($p->name), ''))){
+        echo "Added ".clean($p->name)." to bring \n";
     }else{
         echo "Error adding $p->name to bring \n";
     };
+}
 
+function clean($string) {
+   if(preg_match('/%/', $string)){
+    return str_replace( array("%"), ' Prozent', $string);
+   }else{
+    return str_replace( array("#", "'", ";"), '', $string);
+   }
 }
