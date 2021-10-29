@@ -7,7 +7,7 @@ $email = getenv('EMAIL');
 $password = getenv('PASSWORD');
 
 $bring = new BringApi("$email","$password",true);
-//$bring = new BringApi('henning@andreseck.de','UGBqjR',true);
+
 $lists = json_decode($bring->loadLists());
 echo "Below are your bring lists with their UUID: \n";
 foreach ($lists->lists as $l){
