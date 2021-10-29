@@ -1,6 +1,6 @@
 <?php
 
-// Version: 1.1
+// Version: 1.2
 
 require_once('BringApi.php');
 require_once('GrocyApi.php');
