@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## Version 1.3
+- The missing amount of a product is added to the Bring list. 
+-- Translation of the unit via Environment Variable UNIT
+
+
 ## Version 1.2
 
 - Added possibility to skip products that are only partly missing. 
