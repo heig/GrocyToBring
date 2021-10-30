@@ -1,5 +1,8 @@
 # Copy Grocy "Missing Products" to BRING List 
 
+[Check the CHANGELOG for new features](CHANGELOG.md)
+
+
 ## Build Container
 
 First build the container:
