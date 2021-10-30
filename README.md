@@ -46,6 +46,12 @@ If you want to hide items fron the BRING list, simply add a boolean user field t
 # Known Issues
 Currently no special chars like "%" work in BRING. Therefore I implemented a helper function to replace "%" with "Prozent". You can change this in .env (__PERCENTREPLACE__) for another language.
 
+# Screencast of setup
+
+
+![screencast](https://github.com/heig/GrocyToBring/blob/media/screencasts/Grocy-to-Bring.gif?raw=true)
+
+
 # Thank you
 
 Thank you to helvete003 for reverse-engineering the Bring REST API: https://github.com/helvete003/bring-api
