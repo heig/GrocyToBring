@@ -7,7 +7,7 @@ class GrocyApi {
     const PUT_REQUEST = 'put';
 
 
-    
+
 
     public function __construct($grocyRestURL, $grocyApiKey)
     {
@@ -20,6 +20,21 @@ class GrocyApi {
     public function getVolatileProducts($due_days)
     {
       return json_decode($this->request(self::GET_REQUEST,"stock/volatile","?due_soon_days=".$due_days, true));
+    }
+
+    public function getProductEntity($productid)
+    {
+      return json_decode($this->request(self::GET_REQUEST,"objects/products/".$productid, '',true));
+    }
+
+    public function checkHideFromBring($productid, $hidefrombring)
+    {
+      $result = $this->getProductEntity($productid);
+      if($result->userfields->$hidefrombring == 1){
+        return true;
+      }else{
+        return false;
+      }
     }
 
      /**
