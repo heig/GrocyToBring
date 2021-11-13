@@ -37,6 +37,21 @@ class GrocyApi {
       }
     }
 
+    public function getShoppingListItmes()
+    {
+      
+       $list = json_decode($this->request(self::GET_REQUEST,"objects/shopping_list",'', true));
+       foreach($list as $l){
+         //$list_new[]['name'] = $this->getProductEntity($l->product_id)->name;
+         //$list_new[]['id'] = $l->product_id;
+         $list_new[] = ['name' => $this->getProductEntity($l->product_id)->name,
+                        'id' => $l->product_id,
+                        'amount_missing' => $l->amount 
+                        ];  
+       }
+       return json_decode(json_encode($list_new));
+    }
+
      /**
   *   Handles the request to the server
   *
