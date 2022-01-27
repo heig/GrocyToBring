@@ -6,15 +6,16 @@ class GrocyApi {
     const POST_REQUEST = 'post';
     const PUT_REQUEST = 'put';
 
-
-
-
     public function __construct($grocyRestURL, $grocyApiKey)
     {
       
         $this->grocyRestURL = $grocyRestURL;
-        $this->grocyApiKey = $grocyApiKey;
+        $this->grocyApiKey = $grocyApiKey; 
 
+        $response = json_decode($this->request(self::GET_REQUEST,"objects/quantity_units",'', true),true);
+
+        foreach($response as $quantity)
+          $this->quantities[$quantity["id"]] = $quantity;
     }
 
     public function getVolatileProducts($due_days)

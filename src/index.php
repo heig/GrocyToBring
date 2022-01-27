@@ -38,7 +38,9 @@ foreach($missing_products as $p){
     }elseif($grocySkipPartlyInStockCustom == 1 && $grocy->checkHideFromBring($p->id, getenv('HIDEPARTLYFROMBRING'))){
         echo "Skipping Bring for $p->name because is partly in stock (custom setting) \n";
     }else{
-        if(empty($bring->saveItem(clean($p->name), $p->amount_missing.' '.getenv('UNIT')))){
+        $product_details = $grocy->getProductEntity($p->id);
+        $purchase_unit_name = $grocy->quantities[$product_details->qu_id_purchase]["name"];
+        if(empty($bring->saveItem(clean($p->name), ($p->amount_missing / $product_details->qu_factor_purchase_to_stock).' '.$purchase_unit_name))){
             echo "Added ".clean($p->name)." to bring \n";
         }else{
             echo "Error adding $p->name to bring \n";
