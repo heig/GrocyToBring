@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## Version 1.5
+- Support for the purchase unit maintained in Grocy has been added by andreheuer (Big thanks!)
+  - "UNIT" in .env is not required anymore
+
+
 ## Version 1.4
 - Now the shopping list can be the source for BRING instead of the missing products. 
   - To enable, set SOURCE=shoppinglist in .env
