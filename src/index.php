@@ -40,7 +40,7 @@ foreach($missing_products as $p){
     }else{
         $product_details = $grocy->getProductEntity($p->id);
         $purchase_unit_name = $grocy->quantities[$product_details->qu_id_purchase]["name"];
-        if(empty($bring->saveItem(clean($p->name), ($p->amount_missing / $product_details->qu_factor_purchase_to_stock).' '.$purchase_unit_name))){
+        if(empty($bring->saveItem(clean($p->name), (abs(intval($p->amount_missing / $product_details->qu_factor_purchase_to_stock))).' '.$purchase_unit_name))){
             echo "Added ".clean($p->name)." to bring \n";
         }else{
             echo "Error adding $p->name to bring \n";
