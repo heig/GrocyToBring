@@ -59,13 +59,14 @@ class BringApi {
   /**
   *   Save an item to your current shopping list
   *
+  *   @param string $bringlist      The UUID of the List in Bring
   *   @param string $itemName       The name of the item you want to send to the bring server
   *   @param string $specification  The litte description under the name of the item
   *   @return should return an empty string and $answerHttpStatus should contain 204. If not -> error
   */
-  public function saveItem($itemName,$specification)
+  public function saveItem($bringlist,$itemName,$specification)
   {
-    return $this->request(self::PUT_REQUEST,"bringlists/".$this->bringListUUID,"purchase=".$itemName."&recently=&specification=".$specification."&remove=&sender=null",true);
+    return $this->request(self::PUT_REQUEST,"bringlists/".$bringlist,"purchase=".$itemName."&recently=&specification=".$specification."&remove=&sender=null",true);
   }
 
   /**

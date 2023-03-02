@@ -39,8 +39,9 @@ foreach($missing_products as $p){
         echo "Skipping Bring for $p->name because is partly in stock (custom setting) \n";
     }else{
         $product_details = $grocy->getProductEntity($p->id);
+        $bringlist = $grocy->getBringUUID($product_details->shopping_location_id, getenv('BRINGUUIDFIELD'), $bringuuid);
         $purchase_unit_name = $grocy->quantities[$product_details->qu_id_purchase]["name"];
-        if(empty($bring->saveItem(clean($p->name), (abs(intval($p->amount_missing / $product_details->qu_factor_purchase_to_stock))).' '.$purchase_unit_name))){
+        if(empty($bring->saveItem($bringlist, clean($p->name), (abs(intval($p->amount_missing / $product_details->qu_factor_purchase_to_stock))).' '.$purchase_unit_name))){
             echo "Added ".clean($p->name)." to bring \n";
         }else{
             echo "Error adding $p->name to bring \n";
