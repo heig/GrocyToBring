@@ -27,6 +27,11 @@ class GrocyApi {
     {
       return json_decode($this->request(self::GET_REQUEST,"objects/products/".$productid, '',true));
     }
+   
+    public function getShoppingLocationEntity($shoppinglocationid)
+    {
+      return json_decode($this->request(self::GET_REQUEST,"objects/shopping_locations/".$shoppinglocationid, '',true));
+    } 
 
     public function checkHideFromBring($productid, $hidefrombring)
     {
@@ -35,6 +40,20 @@ class GrocyApi {
         return true;
       }else{
         return false;
+      }
+    }
+
+    public function getBringUUID($shoplocationid, $bringuuidfield, $defaultuuid)
+    {
+      if(!empty($shoplocationid)) {
+        $result = $this->getShoppingLocationEntity($shoplocationid);
+        if(!empty($result->userfields->$bringuuidfield)){
+          return $result->userfields->$bringuuidfield;
+        }else{
+          return $defaultuuid;
+        }
+      }else{
+        return $defaultuuid; 
       }
     }
 
