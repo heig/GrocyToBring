@@ -45,7 +45,11 @@ If you want to hide items fron the BRING list, simply add a boolean user field t
 
 ## Link shopping locations to BRING lists
 
-Add a new text user field to the shopping locations like "Bring List UUID" and set the field name in .end (__BRINGUUIDFIELD__)
+Add a new text user field to the shopping locations like "Bring List UUID" and set the field name in .env (__BRINGUUIDFIELD__)
+
+## Use Shoppinglist and not minimum stock amounts
+
+If you want to copy your shoppinglist to BRING instead of the products that are below minimum stock, set the "SOURCE" option in .env to "shoppinglist" 
 
 # Known Issues
 Currently no special chars like "%" work in BRING. Therefore I implemented a helper function to replace "%" with "Prozent". You can change this in .env (__PERCENTREPLACE__) for another language.
