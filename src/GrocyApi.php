@@ -27,6 +27,11 @@ class GrocyApi {
     {
       return json_decode($this->request(self::GET_REQUEST,"objects/products/".$productid, '',true));
     }
+
+    public function getProductStore($productid)
+    {
+      return json_decode($this->request(self::GET_REQUEST,"stock/products/".$productid, '',true));
+    }
    
     public function getShoppingLocationEntity($shoppinglocationid)
     {
