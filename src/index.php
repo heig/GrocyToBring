@@ -34,9 +34,11 @@ foreach($missing_products as $p){
     if($grocy->checkHideFromBring($p->id, getenv('HIDEFROMBRING'))){
         echo "Skipping Bring for $p->name because it's hidden from Bring \n";
     }elseif($grocySkipPartlyInStock == 1 && $p->is_partly_in_stock == 1){
-        echo "Skipping Bring for $p->name because is partly in stock \n";
+        echo "Skipping Bring for $p->name because it's partly in stock \n";
     }elseif($grocySkipPartlyInStockCustom == 1 && $grocy->checkHideFromBring($p->id, getenv('HIDEPARTLYFROMBRING'))){
-        echo "Skipping Bring for $p->name because is partly in stock (custom setting) \n";
+        echo "Skipping Bring for $p->name because it's partly in stock (custom setting) \n";
+    }elseif($p->done == 1){
+        echo "Skipping Bring for $p->name because it's marked as done \n";
     }else{
         $product_details = $grocy->getProductEntity($p->id);
 		$product_store = $grocy->getProductStore($p->id);

@@ -71,7 +71,8 @@ class GrocyApi {
          //$list_new[]['id'] = $l->product_id;
          $list_new[] = ['name' => $this->getProductEntity($l->product_id)->name,
                         'id' => $l->product_id,
-                        'amount_missing' => $l->amount 
+                        'amount_missing' => $l->amount,
+                        'done' => $l->done
                         ];  
        }
        return json_decode(json_encode($list_new));
